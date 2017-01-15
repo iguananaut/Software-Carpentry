@@ -1,0 +1,136 @@
+% 
+% Chickens, Anyone?  (BOOK version)
+% (c) 2009 Eric R. Jeschke (eric@redskieatnight.com).
+% This work is licensed under a Creative Commons Attribution-Share Alike
+% 3.0 United States License
+% See http://creativecommons.org/licenses/by-sa/3.0/us/
+%
+% Eric Jeschke makes no representation about the suitability or accuracy
+% of this software or data for any purpose, and makes no warranties,
+% either express or implied, including merchantability and fitness for a
+% particular purpose or that the use of this software or data will not
+% infringe any third party patents, copyrights, trademarks, or other
+% rights.  The software and data are provided "as is". 
+%
+% 
+% If you make a .sty file, please let me know!
+%
+% [top-level file]
+\nonstopmode
+
+\documentclass[10pt,final,openany]{book}
+\usepackage{graphicx}
+% where can I find the photos that will be imported for this version
+\graphicspath{{./photos.book/}}
+
+% font configuration is factored out
+\include{fonts}
+
+% in case you want to embed any hyperlinks
+% turn on colorlinks to avoid the nasty box around the link
+\usepackage[colorlinks=true,urlcolor=black]{hyperref}
+
+% geometry package is a much more reasonable way to set margins in LaTeX
+% for Blurb, set this to the actual desired size as indicated by the
+% size calculator on their web site
+\usepackage[paperwidth=9.625in, paperheight=8.25in, 
+            % amount we 'lose' (visually) due to the binding
+            % left and right pages are offset a bit to the sides
+            % (typically looks better for most kinds of bindings)
+            bindingoffset=0.25in,
+            % set total to the dimensions of the printed part
+            total={8in,7.75in},
+            % include header/footer/margin notes in printed area
+            twoside, includeall, nomarginpar,
+            ignorehead=false, ignorefoot=false, ignoremp=false,
+            % center printed area on page
+            vcentering, hcentering]{geometry}
+
+% only play with these if you are going to do margin notes
+% width of margin notes area
+%\setlength{\marginparwidth}{0in}
+% distance between margin and paragraph
+%\setlength{\marginparsep}{0in}
+
+% footer configuration 
+\setlength{\footnotesep}{10pt}
+
+% header configuration
+\setlength{\headheight}{10pt}
+\setlength{\headsep}{0.1in}
+
+\title{Chickens, Anyone?}
+\author{Eric Jeschke}
+
+%%%%%%%%% PDF/X-3 stuff, necessary for Blurb IF USING pdflatex %%%%%%%%%
+% ICC color profiles are embedded in the images
+%% \pdfinfo{
+%% /Title (Chickens, Anyone?)   % set your title here
+%% /Author (Eric Jeschke)       % set author name
+%% /Subject (Chickens)          % set subject
+%% /Keywords (Chickens, Hawaii) % set keywords
+%% /Trapped (False)
+%% /GTS_PDFXVersion (PDF/X-3:2002)
+%% }
+%% % must have a trim box, but I think Blurb ignores the values
+%% \pdfpageattr{%/MediaBox [0 0 693.36000 594.00000]
+%% /TrimBox [0.00000 9.00000 684.36000 585.00000]}
+%% \pdfminorversion=3
+%% \pdfcatalog{
+%% /OutputIntents [ <<
+%% /Info (none)
+%% /Type /OutputIntent
+%% /S /GTS_PDFX
+%% /OutputConditionIdentifier (Blurb.com)
+%% /RegistryName (http://www.color.org/)
+%% >> ]
+%% }
+
+%%%%%%%%% PDF/X-3 stuff, necessary for Blurb IF USING xelatex %%%%%%%%%
+\special{pdf:docinfo <<
+/Title (Chickens, Anyone?)   % set your title here
+/Author (Eric Jeschke)       % set author name
+/Subject (Chickens)          % set subject
+/Keywords (Chickens, Hawaii) % set keywords
+/Trapped (False)
+/GTS_PDFXVersion (PDF/X-3:2002)
+% must have a trim box, but I think Blurb ignores the values
+/TrimBox [0.00000 9.00000 684.36000 585.00000] >>
+}
+\special{pdf:put @catalog <<
+/OutputIntents [ <<
+/Info (none)
+/Type /OutputIntent
+/S /GTS_PDFX
+/OutputConditionIdentifier (Blurb.com)
+/RegistryName (http://www.color.org/)
+>> ] >>
+}
+
+% paragraph indentations
+\setlength{\parindent}{0in}
+% amount of space before each new paragraph begins
+\setlength{\parskip}{1em}
+
+% comment to force even justification
+\raggedright
+
+\begin{document}
+
+\pagestyle{empty}
+
+% interior facing page for book version
+\vspace*{3in}
+\begin{center}
+{\Huge Chickens, Anyone?}
+
+{\Large by Eric Jeschke}
+\end{center}
+
+\newpage
+
+% bring in the rest of the content which is in common with the book
+% version
+\include{common-book}
+
+\end{document}

@@ -1,0 +1,147 @@
+%
+% Chickens, Anyone?  (cover for BOOK version)
+% (c) 2009 Eric R. Jeschke (eric@redskieatnight.com).
+% This work is licensed under a Creative Commons Attribution-Share Alike
+% 3.0 United States License
+% See http://creativecommons.org/licenses/by-sa/3.0/us/
+%
+% Eric Jeschke makes no representation about the suitability or accuracy
+% of this software or data for any purpose, and makes no warranties,
+% either express or implied, including merchantability and fitness for a
+% particular purpose or that the use of this software or data will not
+% infringe any third party patents, copyrights, trademarks, or other
+% rights.  The software and data are provided "as is". 
+%
+% 
+% If you make a .sty file, please let me know!
+%
+% [top-level file]
+\nonstopmode
+
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+% where can I find the photos that will be imported for this version
+\graphicspath{{./photos.book/}}
+
+% separate out font configuration
+\include{fonts}
+
+% for Blurb, set this to the actual desired size of the cover as
+% indicated by the size calculator
+\usepackage[paperwidth=19.375in, paperheight=8.25in, 
+            % There are two ways to use the geometry package.  One way
+            % is to set the text area and let the margins be calculated,
+            % the other way is to set the margins and let the text area
+            % be calculated.  I use the latter here, and the former in 
+            % the book.tex (text block) part.
+            left=0.6875in, top=0.6in, right=0.6875in, bottom=0.5in,
+            % center printed area on page
+            vcentering, hcentering]{geometry}
+
+% width of margin notes area
+\setlength{\marginparwidth}{0in}
+% distance between margin and paragraph
+\setlength{\marginparsep}{0in}
+
+% footer configuration
+\setlength{\footnotesep}{0pt}
+%\setlength{\footskip}{0.0in}
+
+% header configuration
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0.50in}
+
+\title{Chickens, Anyone?}
+\author{Eric Jeschke}
+
+%%%%%%%%% PDF/X-3 stuff, necessary for Blurb IF USING pdflatex %%%%%%%%%
+% ICC color profiles are embedded in the images
+%% \pdfinfo{
+%% /Title (Chickens, Anyone?)   % set your title here
+%% /Author (Eric Jeschke)       % set author name
+%% /Subject (Chickens)          % set subject
+%% /Keywords (Chickens, Hawaii) % set keywords
+%% /Trapped (False)
+%% /GTS_PDFXVersion (PDF/X-3:2002)
+%% }
+%% \pdfpageattr{%/MediaBox [0 0 693.36000 594.00000]
+%% % must have a trim box, but I think Blurb ignores the values
+%% /TrimBox [0.00000 9.00000 684.36000 585.00000]}
+%% \pdfminorversion=3
+%% \pdfcatalog{
+%% /OutputIntents [ <<
+%% /Info (none)
+%% /Type /OutputIntent
+%% /S /GTS_PDFX
+%% /OutputConditionIdentifier (Blurb.com)
+%% /RegistryName (http://www.color.org/)
+%% >> ]
+%% }
+
+%%%%%%%%% PDF/X-3 stuff, necessary for Blurb IF USING xelatex %%%%%%%%%
+\special{pdf:docinfo <<
+/Title (Chickens, Anyone?)   % set your title here
+/Author (Eric Jeschke)       % set author name
+/Subject (Chickens)          % set subject
+/Keywords (Chickens, Hawaii) % set keywords
+/Trapped (False)
+/GTS_PDFXVersion (PDF/X-3:2002)
+% must have a trim box, but I think Blurb ignores the values
+/TrimBox [0.00000 9.00000 684.36000 585.00000] >>
+}
+\special{pdf:put @catalog <<
+/OutputIntents [ <<
+/Info (none)
+/Type /OutputIntent
+/S /GTS_PDFX
+/OutputConditionIdentifier (Blurb.com)
+/RegistryName (http://www.color.org/)
+>> ] >>
+}
+
+% paragraph indentations
+\setlength{\parindent}{0in}
+% amount of space before each new paragraph begins
+\setlength{\parskip}{0.0in}
+
+\raggedright
+
+\begin{document}
+\pagestyle{empty}
+% use a table to lay out two 'minipages' side by side
+\begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+% back cover is left side
+\begin{minipage}[t]{8in}
+\includegraphics[width=8in]{R20090619-103748}
+
+\begin{center}
+{\LARGE Chickens, Anyone?}
+\end{center}
+
+\large{Peek in on one family's adventure in raising backyard chickens.  Eric
+Jeschke takes you behind the scenes to see how the plan all came
+together for this Hawaii ohana.}
+
+\end{minipage}
+&
+
+% front cover is right side
+\begin{minipage}[t]{8in}
+\centering
+
+\includegraphics[width=8in]{R20090531-173219-master}
+
+\vspace*{0.1in}
+{\huge Chickens, Anyone?}
+
+\vspace*{0.1in}
+by
+
+\vspace*{0.1in}
+{\LARGE Eric Jeschke}
+\end{minipage}
+
+\\
+\end{tabular*}
+
+\end{document}
