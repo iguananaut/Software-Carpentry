@@ -1,4 +1,4 @@
-%
+% Based on the template for:
 % Chickens, Anyone?  (cover for BOOK version)
 % (c) 2009 Eric R. Jeschke (eric@redskieatnight.com).
 % This work is licensed under a Creative Commons Attribution-Share Alike
@@ -51,39 +51,16 @@
 \setlength{\headheight}{0in}
 \setlength{\headsep}{0.50in}
 
-\title{Chickens, Anyone?}
-\author{Eric Jeschke}
+\title{Software Carpentry}
+\author{Erik M. Bray}
 
-%%%%%%%%% PDF/X-3 stuff, necessary for Blurb IF USING pdflatex %%%%%%%%%
-% ICC color profiles are embedded in the images
-%% \pdfinfo{
-%% /Title (Chickens, Anyone?)   % set your title here
-%% /Author (Eric Jeschke)       % set author name
-%% /Subject (Chickens)          % set subject
-%% /Keywords (Chickens, Hawaii) % set keywords
-%% /Trapped (False)
-%% /GTS_PDFXVersion (PDF/X-3:2002)
-%% }
-%% \pdfpageattr{%/MediaBox [0 0 693.36000 594.00000]
-%% % must have a trim box, but I think Blurb ignores the values
-%% /TrimBox [0.00000 9.00000 684.36000 585.00000]}
-%% \pdfminorversion=3
-%% \pdfcatalog{
-%% /OutputIntents [ <<
-%% /Info (none)
-%% /Type /OutputIntent
-%% /S /GTS_PDFX
-%% /OutputConditionIdentifier (Blurb.com)
-%% /RegistryName (http://www.color.org/)
-%% >> ]
-%% }
 
 %%%%%%%%% PDF/X-3 stuff, necessary for Blurb IF USING xelatex %%%%%%%%%
 \special{pdf:docinfo <<
-/Title (Chickens, Anyone?)   % set your title here
-/Author (Eric Jeschke)       % set author name
-/Subject (Chickens)          % set subject
-/Keywords (Chickens, Hawaii) % set keywords
+/Title (Software Carpentry)   % set your title here
+/Author (Erik M. Bray)       % set author name
+/Subject (Software)          % set subject
+/Keywords (Software, Greg Wilson) % set keywords
 /Trapped (False)
 /GTS_PDFXVersion (PDF/X-3:2002)
 % must have a trim box, but I think Blurb ignores the values
@@ -108,19 +85,13 @@
 
 \begin{document}
 \pagestyle{empty}
+\vspace*{\fill}
 % use a table to lay out two 'minipages' side by side
 \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
 % back cover is left side
 \begin{minipage}[t]{8in}
-\includegraphics[width=8in]{R20090619-103748}
 
-\begin{center}
-{\LARGE Chickens, Anyone?}
-\end{center}
-
-\large{Peek in on one family's adventure in raising backyard chickens.  Eric
-Jeschke takes you behind the scenes to see how the plan all came
-together for this Hawaii ohana.}
+% TODO: Put something here
 
 \end{minipage}
 &
@@ -128,20 +99,17 @@ together for this Hawaii ohana.}
 % front cover is right side
 \begin{minipage}[t]{8in}
 \centering
-
-\includegraphics[width=8in]{R20090531-173219-master}
-
-\vspace*{0.1in}
-{\huge Chickens, Anyone?}
+\includegraphics[width=8in]{software-carpentry-with-hammer}
 
 \vspace*{0.1in}
-by
+founded by
 
 \vspace*{0.1in}
-{\LARGE Eric Jeschke}
+{\LARGE Greg Wilson}
 \end{minipage}
 
 \\
 \end{tabular*}
+\vspace*{\fill}
 
 \end{document}
