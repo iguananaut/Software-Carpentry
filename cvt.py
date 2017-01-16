@@ -16,14 +16,14 @@ See http://creativecommons.org/licenses/by-sa/3.0/us/
   either express or implied, including merchantability and fitness for a
   particular purpose or that the use of this software or data will not
   infringe any third party patents, copyrights, trademarks, or other
-  rights.  The software and data are provided "as is". 
+  rights.  The software and data are provided "as is".
 
 Usage (you will need to have ImageMagick installed)
 
   $ ./cvt.py --help
 
-  $ ./cvt.py --dst=. --dpi=144 --quality=75 --length=8 <file> ... 
-  $ ./cvt.py --dst=. --dpi=300 --quality=90 --length=8 <file> ... 
+  $ ./cvt.py --dst=. --dpi=144 --quality=75 --length=8 <file> ...
+  $ ./cvt.py --dst=. --dpi=300 --quality=90 --length=8 <file> ...
 """
 
 import sys, os
@@ -49,11 +49,11 @@ def main(options, args):
     d['density'] = '%dx%d' % (d['dpi'], d['dpi'])
 
     dst_dir = options.dstdir.strip('/')
-    
+
     # Convert each file on the command line
     for in_file in args:
         d['in_file'] = in_file
-            
+
         path, filename = os.path.split(in_file)
         name, ext = os.path.splitext(filename)
 
@@ -61,7 +61,7 @@ def main(options, args):
 
         cmd = cmd_str % d
         print cmd
-        
+
         if not options.dry_run:
             os.system(cmd)
 
@@ -70,7 +70,7 @@ if __name__ == '__main__':
     # Parse command line into options and arguments.
     usage = "usage: %prog [options] file [...]"
     optprs = OptionParser(usage=usage, version=('%%prog'))
-    
+
     optprs.add_option("--debug", dest="debug", default=False,
                       action="store_true",
                       help="Enter the pdb debugger on main()")
@@ -113,5 +113,5 @@ if __name__ == '__main__':
 
     else:
         main(options, args)
-       
+
 # END

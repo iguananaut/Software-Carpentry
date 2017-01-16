@@ -4,50 +4,46 @@
 #
 # Pass environment variables to sub-make's
 #.EXPORT_ALL_VARIABLES
+.PHONY: all book-blurb book-photos sweep clean tar
 
-BOOK_DOCS = common-book.tex
-FOLIO_DOCs = common-folio.tex
+BOOK_DOCs = common-book.tex
 #CMD  = pdflatex
 CMD  = xelatex
 ARGS = -output-driver="xdvipdfmx -q -E -V 3"
 
-PHOTOs_master = photos.master/*
+PHOTO_format = jpg
+PHOTOs_master = $(wildcard photos.master/*)
+PHOTOs_book = $(addsuffix .$(PHOTO_format),$(addprefix photos.book/,$(basename $(notdir $(PHOTOs_master)))))
 
-all: book-web book-blurb folio-web folio-print
+all: book-blurb
 
-book-web: book-web.pdf
 book-blurb: book-blurb.pdf cover-blurb.pdf
-folio-web: folio-web.pdf
-folio-print: folio-print.pdf
 
-book-web.pdf: book-web.tex $(BOOK_DOCs) 
-	$(CMD) $<
-
-book-blurb.pdf: book-blurb.tex $(BOOK_DOCs) 
+book-blurb.pdf: book-blurb.tex $(BOOK_DOCs) $(PHOTOs_book)
 	$(CMD) $(ARGS) $<
 
-cover-blurb.pdf: cover-blurb.tex
+cover-blurb.pdf: cover-blurb.tex $(PHOTOs_book)
 	$(CMD) $(ARGS) $<
 
-folio-web.pdf: folio-web.tex $(FOLIO_DOCs) 
-	$(CMD) $<
+book-photos: $(PHOTOs_book)
 
-folio-print.pdf: folio-print.tex $(FOLIO_DOCs) 
-	$(CMD) $(ARGS) $<
+$(PHOTOs_book): | photos.book
+	./cvt.py --format=$(PHOTO_format) --dst=photos.book --dpi=300 --length=8 $<
 
-web_photos: $(PHOTOs_master)
-	./cvt.py --dst=photos.web --dpi=144 --quality=75 --length=8 $(PHOTOs_master)
+# Devilish rule generator to associate each photo with its original
+$(foreach rule,$(join $(addsuffix :,$(PHOTOs_book)),$(PHOTOs_master)),$(eval $(rule)))
 
-book_photos: $(PHOTOs_master)
-	./cvt.py --dst=photos.book --dpi=300 --length=8 $(PHOTOs_master)
+photos.book:
+	mkdir $@
 
 sweep:
-	-/bin/rm *~ *.out *.aux *.log \#*\# 
+	-/bin/rm -f *~ *.out *.aux *.log \#*\# 
 
 clean: sweep
-	-/bin/rm *.pdf 
+	-/bin/rm -f *.pdf 
+	-/bin/rm -rf photos.book
 
 tar: sweep
-	cd ..; tar czf blurb_latex.tgz --exclude=photos.master --exclude=photos.book latex
+	cd ..; tar czf blurb_latex.tgz --exclude=photos.master latex
 
 # END
